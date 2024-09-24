@@ -5,11 +5,12 @@ import Link from 'next/link';
 import Image from 'next/image';
 import {sidebarLinks} from '../constants/index';
 import  {usePathname} from 'next/navigation';
+import Footer from './Footer';
 
 const Sidebar = ({user}:SidebarProps) => {
     const pathname = usePathname();
 
-  return (
+    return (
     <section className="sidebar">
         <nav className="flex flex-col gap-4">
             <Link href="/" className="mb-12 cursor-pointer flex items-center gap-2">
@@ -19,11 +20,10 @@ const Sidebar = ({user}:SidebarProps) => {
                 width={34}
                 alt="Horizon logo"
                 className="size-[24px] max-xl:size-14"
-                
-                 />
-                 <h1 className="sidebar-logo">
+                />
+                <h1 className="sidebar-logo">
                     Horizon
-                 </h1>
+                </h1>
             </Link> 
             {sidebarLinks.map((item)=>{
                 const isActive = pathname === item.route || pathname.startsWith(`${item.route}/`);
@@ -60,9 +60,9 @@ const Sidebar = ({user}:SidebarProps) => {
             USER
         </nav>
 
-        FOOTER
+        <Footer user={user} type='desktop' />
     </section>
-  )
+    )
 }
 
 export default Sidebar
